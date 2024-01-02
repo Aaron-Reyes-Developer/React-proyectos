@@ -1,0 +1,30 @@
+.lista{
+    max-width: 360px;
+    min-height: 50px;
+    background-color: rgb(207, 207, 207);
+    display: flex;
+    padding: 5px 10px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    color: #222;
+    border-radius: 7px;
+    text-align: left;
+    margin-bottom: 1rem;
+}
+.contenedorImagenLista{
+    display: flex;
+    gap: 10px;
+}
+.contenedorImagenLista img{
+    width: 25px;
+    cursor: pointer;
+}
+.realizado {
+    text-decoration: line-through;
+    background-color: #2e2e2e;
+    color: #fff;
+}
+
+
+

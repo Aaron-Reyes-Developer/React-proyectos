@@ -1,0 +1,44 @@
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: #333333;
+    z-index: 1;
+}
+.nadvar{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    justify-content: center;
+    /* background-color: aqua; */
+}
+.contenedorLogo{
+    /* background-color: rgb(172, 50, 50); */
+    width: 10%;
+    height: 100%;
+}
+.contenedorLogo img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.nadvar ul{
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    /* background-color: red; */
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+    padding-right: 10px;
+    color: #fff ;
+}
+.nadvar ul li a{
+    color: #dadada ;
+}
