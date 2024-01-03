@@ -72,7 +72,8 @@ const ListaTareas = _ =>{
           return nuevoEstado;
           
         });
-      };
+
+    };
 
 
     // AGREGAMOS LA TAREA AL OBJETO 
@@ -88,24 +89,41 @@ const ListaTareas = _ =>{
     }
 
 
+    // eliminar lista
+    const eliminarLista = id_eliminar =>{
+        
+        // como 'setEstadoLista'  es una funcion asincrona, para guarl el objeto en el local, se tiene que 
+        // hacer una funcion para recorrer el objeto (retornando un objeto nuevo pero sin el dato que ecluimos)
+        setEstadoLista( datosPrevios => {
+            let nuevoEstado = datosPrevios.filter(objeto => objeto.id !== id_eliminar)
+            guardarLocal(nuevoEstado)
+            return nuevoEstado
+        })
+        
+    }
+
+
+
     // funcion para agregar el objeto a el local storage
     const guardarLocal = objeto => {
         localStorage.setItem('miObjeto', JSON.stringify(objeto))
-        console.log('guardado')
     }
 
 
 
     return (
         <>
-            <h1>Lista de tareas</h1>
+            <div className="contendorTitulo" style={{marginBottom: '1rem'}}>
+                <h1 style={{marginBottom: '0'}}>Lista de tareas ({estadoLista.length})</h1>
+                <span style={{color: '#A5A5A5'}}><i>Usa el localStorage para gardar la lista</i></span>
+            </div>
 
             <div className="contenedorListaDeTareas">
 
-                <div className="contenedorInputAgregar">
-                    <input type="text" value={estadoInput} placeholder="Ingresa tu tarea" onChange={ e => setEstadoInput(e.target.value)}/>
+                <form className="contenedorInputAgregar" onSubmit={e => e.preventDefault()}>
+                    <input type="text"  value={estadoInput} placeholder="Ingresa tu tarea" onChange={ e => setEstadoInput(e.target.value)} />
                     <button onClick={agregarTarea}  className="botonAgregarTarea">Agregar</button>
-                </div>
+                </form>
 
 
                 {
@@ -115,7 +133,8 @@ const ListaTareas = _ =>{
                                 key={tarea.id} 
                                 detalle={tarea.detalle} 
                                 clase={tarea.clase ? '' : 'realizado'} 
-                                accion={ _ => handelEstado(tarea.id)}  //
+                                accion={ _ => handelEstado(tarea.id)}  
+                                accionEliminar = {_ => eliminarLista(tarea.id)}
                             />
                         )
                     })
